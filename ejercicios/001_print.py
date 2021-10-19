@@ -1,5 +1,3 @@
-#FICHERO MODIFICADO EN EL ORDENADOR DE FERNANDO
-
 texto1 = "En un lugar de La Mancha"
 texto2 = "de cuyo nombre no quiero acordarme"
 #Mostrar los dos textos separados por "---" con un único print
