@@ -6,7 +6,6 @@ zs=[]
 for x in xs:
     ys.append(math.sin(x))
     zs.append(math.cos(x))
-
 plt.plot(xs,ys,"red")
 plt.plot(xs,zs,"green")
 plt.show()
