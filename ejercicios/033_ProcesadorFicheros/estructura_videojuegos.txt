@@ -1,0 +1,10 @@
+identificador
+título
+número de jugadores
+fecha de publicación
+developer
+publisher
+géneros
+calificación
+plataforma
+autor
