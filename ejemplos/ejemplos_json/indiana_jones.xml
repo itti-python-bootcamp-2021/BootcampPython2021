@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root response="True">
+
+<movie title="Indiana Jones and the Raiders of the Lost Ark" year="1981" rated="PG" released="12 Jun 1981" runtime="115 min" genre="Action, Adventure" director="Steven Spielberg" writer="Lawrence Kasdan, George Lucas, Philip Kaufman" actors="Harrison Ford, Karen Allen, Paul Freeman" plot="In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler's Nazis can obtain its awesome powers." language="English, German, Hebrew, Spanish, Arabic, Nepali" country="United States" awards="Won 5 Oscars. 37 wins and 24 nominations total" poster="https://m.media-amazon.com/images/M/MV5BMjA0ODEzMTc1Nl5BMl5BanBnXkFtZTcwODM2MjAxNA@@._V1_SX300.jpg" metascore="85" imdbRating="8.4" imdbVotes="923,020" imdbID="tt0082971" type="movie"/>
+
+</root>

@@ -1,0 +1,16 @@
+{
+    "titulo":"Superman",
+    "director":"Richard Donner",
+    "anyo":1979,
+    "creditos": [
+        {
+            "nombre":"Marlon Brando"
+        },
+        {
+            "nombre":"Gene Hackman"
+        },
+        {
+            "nombre":"Christopher Reeve"
+        }
+    ]
+}
