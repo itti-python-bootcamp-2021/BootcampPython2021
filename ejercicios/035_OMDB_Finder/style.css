@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.titular {
+    width: 100%;
+    margin: auto;
+    padding-top: 0.5em;
+    text-align: center;
+    height: 2em;
+    background-color: antiquewhite;
+    font-weight: bolder;
+    margin-bottom: 1em;
+}
+
+.ficha {
+    padding-top: 1em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    width: 30%;
+    margin: auto;
+    background-color: orange;
+    color:black;
+    border-radius: 20px;
+    text-align: right;
+}

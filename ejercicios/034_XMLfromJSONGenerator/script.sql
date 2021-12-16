@@ -1,0 +1,1 @@
+INSERT into TABLAS_PELICULAS (titulo, anyo, rated) VALUES ('Indiana Jones and the Raiders of the Lost Ark', '1981', 'PG')

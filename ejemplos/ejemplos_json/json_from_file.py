@@ -14,6 +14,6 @@ contenido = get_json(PATH) #contenido es un diccionario
 print(contenido.get("titulo"))
 print(contenido.get("director"))
 print(contenido.get("anyo"))
-creditos = contenido.get("creditos")
-for actor in creditos:
+actores = contenido.get("creditos")
+for actor in actores:
     print(actor.get("nombre"))
