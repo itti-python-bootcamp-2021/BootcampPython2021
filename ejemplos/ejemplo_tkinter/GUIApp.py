@@ -2,18 +2,21 @@ import logging
 import sys
 from tkinter import *
 from gestor_eventos import *
+from frame1 import Frame1
+from frame2 import Frame2
 
 
 class GUIApp:
     WINDOW_WIDTH = 1024
     WINDOW_HEIGHT = 768
     app = Tk()
+    frames = {}
 
     # Constructor
     def __init__(self) -> None:
         self.init_window()
         self.init_menu()
-        # self.init_components()
+        #self.init_components()
         self.init_frames()
         self.app.mainloop()
 
@@ -36,8 +39,13 @@ class GUIApp:
         menu_archivo = ("Archivo", (("Nuevo", self.prueba), ("Abrir",),
                         ("Guardar",), ("Cerrar",), None, ("Salir", self.exit)))
         menu_editar = ("Editar", (("Cortar",), ("Copiar",), ("Pegar",)))
+        menu_ventanas = ("Ventanas", 
+            (
+                ("Ventana rosa",self.mostrarFrame1),
+                ("Ventana azul",self.mostrarFrame2)
+        ))
         menu_ayuda = ("Ayuda", (("Ayuda",), None, ("Acerca de...",)))
-        menus = (menu_archivo, menu_editar, menu_ayuda)
+        menus = (menu_archivo, menu_editar, menu_ventanas, menu_ayuda)
         self.app.config(menu=menubar)
         for menu in menus:
             nuevo_menu = Menu(menubar, tearoff=0)
@@ -65,13 +73,10 @@ class GUIApp:
 
     def init_frames(self):
         logging.debug("Entrando en init_frames")
-        frame1 = Frame(self.app, bg="green",
-                       width=self.WINDOW_WIDTH, height=self.WINDOW_HEIGHT)
-        frame1.pack()
-        frame2 = Frame(self.app, bg="pink",
-                       width=self.WINDOW_WIDTH, height=self.WINDOW_HEIGHT)
-        frame2.pack()
-
+        self.frames["Frame1"]=Frame1(self.app)
+        self.frames["Frame2"]=Frame2(self.app)
+        self.mostrarFrame("Frame1")
+        
         # boton = Button(frame1, height=10, width=10, text="Púlsame", borderwidth=10, bg='#4a7abc')
         # boton.bind("<Button-1>",calcular())
         # boton.pack()
@@ -82,6 +87,22 @@ class GUIApp:
 
     def prueba(self):
         logging.debug("Entrando en prueba")
+        
+
+    def mostrarFrame(self, frameName):
+        logging.debug("Entrando en mostrarFrame")
+        for frame in self.frames.values():
+            frame.pack_forget()
+        self.frames[frameName].pack()
+    
+    def mostrarFrame1(self):
+        logging.debug("Entrando en mostrarFrame1")
+        self.mostrarFrame("Frame1")
+    
+    def mostrarFrame2(self):
+        logging.debug("Entrando en mostrarFrame2")
+        self.mostrarFrame("Frame2")
+
 
 if __name__ == "__main__":
     logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
