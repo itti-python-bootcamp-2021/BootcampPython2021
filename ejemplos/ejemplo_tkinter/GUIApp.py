@@ -1,14 +1,15 @@
 import logging
 import sys
 from tkinter import *
-from gestor_eventos import *
-from frame1 import Frame1
-from frame2 import Frame2
-
+import tkinter.messagebox
+from ui.frame1 import Frame1
+from ui.frame2 import Frame2
+from ui.frame3 import Frame3
 
 class GUIApp:
     WINDOW_WIDTH = 1024
     WINDOW_HEIGHT = 768
+    APP_TITLE = "Gestor de Facturas v.1.0"
     app = Tk()
     frames = {}
 
@@ -16,7 +17,6 @@ class GUIApp:
     def __init__(self) -> None:
         self.init_window()
         self.init_menu()
-        #self.init_components()
         self.init_frames()
         self.app.mainloop()
 
@@ -30,21 +30,22 @@ class GUIApp:
         self.app.geometry(
             f"{self.WINDOW_WIDTH}x{self.WINDOW_HEIGHT}+{OFFSET_X}+{OFFSET_Y}")
         self.app.resizable(False, False)
-        self.app.title("Gestor de Facturas v.1.0")
+        self.app.title(self.APP_TITLE)
 
     # Construcción del menú
     def init_menu(self):
         logging.debug("Entrando en init_menu")
         menubar = Menu(self.app)
         menu_archivo = ("Archivo", (("Nuevo", self.prueba), ("Abrir",),
-                        ("Guardar",), ("Cerrar",), None, ("Salir", self.exit)))
+            ("Guardar",), ("Cerrar",), None, ("Salir", self.exit)))
         menu_editar = ("Editar", (("Cortar",), ("Copiar",), ("Pegar",)))
-        menu_ventanas = ("Ventanas", 
+        menu_ventanas = ("Peliculas", 
             (
-                ("Ventana rosa",self.mostrarFrame1),
-                ("Ventana azul",self.mostrarFrame2)
+                ("Crear",self.mostrarFrame1),
+                ("Consultar",self.mostrarFrame2),
+                ("Borrar",self.mostrarFrame3)
         ))
-        menu_ayuda = ("Ayuda", (("Ayuda",), None, ("Acerca de...",)))
+        menu_ayuda = ("Ayuda", (("Ayuda",), None, ("Acerca de...", self.about)))
         menus = (menu_archivo, menu_editar, menu_ventanas, menu_ayuda)
         self.app.config(menu=menubar)
         for menu in menus:
@@ -61,35 +62,16 @@ class GUIApp:
                         print(opcion[1])
             menubar.add_cascade(label=menu[0], menu=nuevo_menu)
 
-    # Construcción de los componentes
-    def init_components(self):
-        logging.debug("Entrando en create_components")
-        text_input = Text()
-        text_input.pack()
-        boton = Button(height=10, width=10, text="Púlsame",
-                       borderwidth=10, bg='#4a7abc')
-        # boton.bind("<Button-1>",calcular())
-        boton.pack()
-
+    #Inicialización de las "pantallas" (Frames) de la aplicación
     def init_frames(self):
         logging.debug("Entrando en init_frames")
-        self.frames["Frame1"]=Frame1(self.app)
-        self.frames["Frame2"]=Frame2(self.app)
-        self.mostrarFrame("Frame1")
-        
-        # boton = Button(frame1, height=10, width=10, text="Púlsame", borderwidth=10, bg='#4a7abc')
-        # boton.bind("<Button-1>",calcular())
-        # boton.pack()
+        self.frames["Frame1"]=Frame1(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.frames["Frame2"]=Frame2(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.frames["Frame3"]=Frame3(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.mostrarFrame1()
 
-    def exit(self):
-        logging.debug("Entrando en exit")
-        sys.exit()
-
-    def prueba(self):
-        logging.debug("Entrando en prueba")
-        
-
-    def mostrarFrame(self, frameName):
+    #Cambio de Frame 
+    def showFrame(self, frameName):
         logging.debug("Entrando en mostrarFrame")
         for frame in self.frames.values():
             frame.pack_forget()
@@ -97,12 +79,26 @@ class GUIApp:
     
     def mostrarFrame1(self):
         logging.debug("Entrando en mostrarFrame1")
-        self.mostrarFrame("Frame1")
+        self.showFrame("Frame1")
     
     def mostrarFrame2(self):
         logging.debug("Entrando en mostrarFrame2")
-        self.mostrarFrame("Frame2")
+        self.showFrame("Frame2")
+    
+    def mostrarFrame3(self):
+        logging.debug("Entrando en mostrarFrame3")
+        self.showFrame("Frame3")
+        
+    def exit(self):
+        logging.debug("Entrando en exit")
+        sys.exit()
 
+    def prueba(self):
+        logging.debug("Entrando en prueba")
+
+    def about(self):
+        logging.debug("Entrando en About...")
+        tkinter.messagebox.showinfo(title="Python Simple GUI Framework", message="Fernando Paniagua (2021)\nfernando.paniagua.formacion@gmail.com")
 
 if __name__ == "__main__":
     logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
