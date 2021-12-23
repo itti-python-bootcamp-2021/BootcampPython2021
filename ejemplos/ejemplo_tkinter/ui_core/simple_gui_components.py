@@ -1,12 +1,15 @@
 from tkinter import *
 from tkinter import ttk
-from typing import Tuple
+from typing import List
 #https://pythonguides.com/python-tkinter-treeview/
 #https://pythonguides.com/python-tkinter-table-tutorial/
 
 class SimpleTable(ttk.Treeview):
     def __init__(self, frame, columns_ids, columns_names, table_with, rows_height):
         ttk.Treeview.__init__(self, frame, height=rows_height)
+
+        #Modo de selección de una única fila
+        self['selectmode']="browse"
 
         #Cálculo del ancho de las columnas
         column_with = int(table_with/len(columns_ids))
@@ -24,12 +27,19 @@ class SimpleTable(ttk.Treeview):
 
         self.pack()
 
-    def insert_rows(self, rows_values : Tuple):
+    def clear_all(self):
+        for i in self.get_children():
+            self.delete(i)
+
+    def insert_rows(self, rows_values : List, key_position : int):
         for row in rows_values:
-            self.insert_row(row)
+            self.insert_row(row, key_position)
         
-    def insert_row(self, row_values : Tuple):
-        self.insert(parent='',index='end', values=row_values)
+    def insert_row(self, row_values : List, key_position : int):
+        self.insert(parent='',index='end', iid=row_values[key_position] ,values=row_values)
+
+    def get_selected_row(self):
+        return self.focus()
 
 class SuperFrame(Frame):
     def __init__(self, parent, bg, width, height):

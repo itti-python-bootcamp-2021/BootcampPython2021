@@ -6,39 +6,36 @@ from ui_core.simple_gui_components import SuperFrame
 from model.pelicula import Pelicula
 import logging
 
-class Frame1(SuperFrame):
+class FrameCreacion(SuperFrame):
     #Botones
-    BUTTONS_WIDTH=200
+    BUTTONS_WIDTH=100
     BUTTONS_HEIGHT=50
     buttons_images=[]
     #Color de fondo
-    BG_COLOR = "pink"
+    BG_COLOR = None
     def __init__(self, parent, width, height):
         SuperFrame.__init__(self, parent, bg=self.BG_COLOR, width=width, height=height)
 
         #Botones para la toolbar
         buttons = (
-            ("Refrescar",self.refrescar,None),
             ("Guardar",self.guardar,"icons/save.png"),
-            ("Cancelar",self.cancelar,"icons/cancel.png")
         ) 
         self.createToolbar(buttons, self.BUTTONS_WIDTH, self.BUTTONS_HEIGHT)
         #Componentes de la GUI
         self.label_titulo = tk.Label(self, text="Titulo:", background=self.BG_COLOR)
-        self.label_titulo.place(x=50,y=100)
+        self.label_titulo.place(x=300,y=200)
         self.entry_titulo = tk.Entry(self, width=50)
-        self.entry_titulo.place(x=140, y=100)
+        self.entry_titulo.place(x=390, y=200)
 
         self.label_director = tk.Label(self, text="Director:", background=self.BG_COLOR)
-        self.label_director.place(x=50,y=130)
+        self.label_director.place(x=300,y=230)
         self.entry_director = tk.Entry(self, width=50)
-        self.entry_director.place(x=140, y=130)
+        self.entry_director.place(x=390, y=230)
 
         self.label_anyo = tk.Label(self, text="Año estreno:", background=self.BG_COLOR)
-        self.label_anyo.place(x=50,y=160)
+        self.label_anyo.place(x=300,y=260)
         self.entry_anyo = tk.Entry(self, width=25)
-        self.entry_anyo.place(x=140, y=160)
-
+        self.entry_anyo.place(x=390, y=260)
 
         self.pack()
 
@@ -55,10 +52,13 @@ class Frame1(SuperFrame):
         try:
             gestor = GestorBBDD()
             gestor.create(pelicula)
-            tk.messagebox.showinfo(title="Movie Manager", message="La película se ha creado satisfactoriamente") 
+            tk.messagebox.showinfo(title="Aviso", message="La película se ha creado satisfactoriamente") 
+            self.entry_titulo.delete(0,"end")
+            self.entry_director.delete(0,"end")
+            self.entry_anyo.delete(0,"end")
         except Exception as e:
             logging.error(e)
-            tk.messagebox.showerror(title="Movie Manager", message="Error al crear la película")
+            tk.messagebox.showerror(title="Error", message="Error al crear la película")
 
     def cancelar(self):
         print("Cancelando...")

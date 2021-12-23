@@ -2,14 +2,13 @@ import logging
 import sys
 from tkinter import *
 import tkinter.messagebox
-from ui.frame1 import Frame1
-from ui.frame2 import Frame2
-from ui.frame3 import Frame3
+from ui.frame_creacion import FrameCreacion
+from ui.frame_edicion import FrameEdicion
 
 class GUIApp:
     WINDOW_WIDTH = 1024
     WINDOW_HEIGHT = 768
-    APP_TITLE = "Gestor de Facturas v.1.0"
+    APP_TITLE = "Gestor de Películas v.1.0"
     app = Tk()
     frames = {}
 
@@ -41,9 +40,8 @@ class GUIApp:
         menu_editar = ("Editar", (("Cortar",), ("Copiar",), ("Pegar",)))
         menu_ventanas = ("Peliculas", 
             (
-                ("Crear",self.mostrarFrame1),
-                ("Consultar",self.mostrarFrame2),
-                ("Borrar",self.mostrarFrame3)
+                ("Crear",self.mostrar_frame_creacion),
+                ("Editar",self.mostrar_frame_edicion)
         ))
         menu_ayuda = ("Ayuda", (("Ayuda",), None, ("Acerca de...", self.about)))
         menus = (menu_archivo, menu_editar, menu_ventanas, menu_ayuda)
@@ -65,10 +63,9 @@ class GUIApp:
     #Inicialización de las "pantallas" (Frames) de la aplicación
     def init_frames(self):
         logging.debug("Entrando en init_frames")
-        self.frames["Frame1"]=Frame1(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
-        self.frames["Frame2"]=Frame2(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
-        self.frames["Frame3"]=Frame3(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
-        self.mostrarFrame1()
+        self.frames["FrameCreacion"]=FrameCreacion(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.frames["FrameEdicion"]=FrameEdicion(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.mostrar_frame_edicion()
 
     #Cambio de Frame 
     def showFrame(self, frameName):
@@ -77,17 +74,13 @@ class GUIApp:
             frame.pack_forget()
         self.frames[frameName].pack()
     
-    def mostrarFrame1(self):
-        logging.debug("Entrando en mostrarFrame1")
-        self.showFrame("Frame1")
+    def mostrar_frame_creacion(self):
+        logging.debug("Entrando en mostrar_frame_creacion")
+        self.showFrame("FrameCreacion")
     
-    def mostrarFrame2(self):
-        logging.debug("Entrando en mostrarFrame2")
-        self.showFrame("Frame2")
-    
-    def mostrarFrame3(self):
-        logging.debug("Entrando en mostrarFrame3")
-        self.showFrame("Frame3")
+    def mostrar_frame_edicion(self):
+        logging.debug("Entrando en mostrar_frame_edicion")
+        self.showFrame("FrameEdicion")
         
     def exit(self):
         logging.debug("Entrando en exit")
