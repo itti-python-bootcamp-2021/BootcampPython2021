@@ -1,35 +1,61 @@
 import logging
 import sys
+import os
 from tkinter import *
 import tkinter.messagebox
+import json
 from ui.frame_creacion import FrameCreacion
 from ui.frame_edicion import FrameEdicion
 
 class GUIApp:
-    WINDOW_WIDTH = 1024
-    WINDOW_HEIGHT = 768
-    APP_TITLE = "Gestor de Películas v.1.0"
+    CONFIG_FILE_NAME = "config.json"
+    window_width = 0
+    window_height = 0
+    app_title = None
     app = Tk()
     frames = {}
 
     # Constructor
     def __init__(self) -> None:
+        self.read_config()
         self.init_window()
         self.init_menu()
         self.init_frames()
         self.app.mainloop()
 
+    # Lectura de la configuración de la APP
+    def read_config(self):
+        if(not os.path.exists(self.CONFIG_FILE_NAME)):
+            logging.debug("Creando fichero de configuración")
+            self.create_default_config_file()
+        logging.debug("Leyendo fichero de configuración")
+        with open(self.CONFIG_FILE_NAME,mode="r") as json_file:
+            config = json.load(json_file)
+        self.app_title = config["APP_TITLE"]
+        self.window_width = int(config["WINDOW_WIDTH"])
+        self.window_height = int(config["WINDOW_HEIGHT"])
+
+    def create_default_config_file(self):
+        config = {
+            "APP_TITLE":"Default App Name",
+            "WINDOW_WIDTH":1024,
+            "WINDOW_HEIGHT":768
+        }
+        with open(self.CONFIG_FILE_NAME,mode="w") as json_file:
+            json.dump(config, json_file)
+
+
     # Construcción de la ventana
     def init_window(self):
         logging.debug("Entrando en create_window")
-        ancho_pantalla = self.app.winfo_screenwidth()
-        alto_pantalla = self.app.winfo_screenheight()
-        OFFSET_X = int((ancho_pantalla - self.WINDOW_WIDTH) / 2)
-        OFFSET_Y = int((alto_pantalla - self.WINDOW_HEIGHT) / 2)
+        screen_width = self.app.winfo_screenwidth()
+        screen_height = self.app.winfo_screenheight()
+        OFFSET_X = int((screen_width - self.window_width) / 2)
+        OFFSET_Y = int((screen_height - self.window_height) / 2)
         self.app.geometry(
-            f"{self.WINDOW_WIDTH}x{self.WINDOW_HEIGHT}+{OFFSET_X}+{OFFSET_Y}")
+            f"{self.window_width}x{self.window_height}+{OFFSET_X}+{OFFSET_Y}")
         self.app.resizable(False, False)
-        self.app.title(self.APP_TITLE)
+        self.app.title(self.app_title)
 
     # Construcción del menú
     def init_menu(self):
@@ -63,8 +89,8 @@ class GUIApp:
     #Inicialización de las "pantallas" (Frames) de la aplicación
     def init_frames(self):
         logging.debug("Entrando en init_frames")
-        self.frames["FrameCreacion"]=FrameCreacion(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
-        self.frames["FrameEdicion"]=FrameEdicion(self.app, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+        self.frames["FrameCreacion"]=FrameCreacion(self.app, self.window_width, self.window_height)
+        self.frames["FrameEdicion"]=FrameEdicion(self.app, self.window_width, self.window_height)
         self.mostrar_frame_edicion()
 
     #Cambio de Frame 

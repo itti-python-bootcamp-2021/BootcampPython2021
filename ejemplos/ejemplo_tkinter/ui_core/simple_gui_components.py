@@ -38,8 +38,11 @@ class SimpleTable(ttk.Treeview):
     def insert_row(self, row_values : List, key_position : int):
         self.insert(parent='',index='end', iid=row_values[key_position] ,values=row_values)
 
-    def get_selected_row(self):
+    def get_selected_row_index(self):
         return self.focus()
+
+    def get_selected_row_values(self):
+        return self.item(self.focus())["values"]
 
 class SuperFrame(Frame):
     def __init__(self, parent, bg, width, height):
@@ -56,3 +59,12 @@ class SuperFrame(Frame):
                 new_button = ttk.Button(self, text=button[0],command=button[1])
             new_button.place(x=i*width,y=0,width=width,height=height)
             i+=1
+
+    def set_entry_text(self, entry : Entry, text : str):
+        #En la posición 4 de la tupla devuelta por la clave "state" se encuentra el estado del Entry
+        #Todos los Entry se ponen en modo "normal", se editan, y después se restaura su estado inicial 
+        original_state = entry.config("state")[4]
+        entry.config(state="normal")
+        entry.delete(0,END)
+        entry.insert(0,text)
+        entry.config(state=original_state)

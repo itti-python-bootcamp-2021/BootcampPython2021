@@ -21,6 +21,12 @@ class FrameCreacion(SuperFrame):
             ("Guardar",self.guardar,"icons/save.png"),
         ) 
         self.createToolbar(buttons, self.BUTTONS_WIDTH, self.BUTTONS_HEIGHT)
+        
+        self.init_components()
+
+        self.pack()
+
+    def init_components(self):
         #Componentes de la GUI
         self.label_titulo = tk.Label(self, text="Titulo:", background=self.BG_COLOR)
         self.label_titulo.place(x=300,y=200)
@@ -36,8 +42,6 @@ class FrameCreacion(SuperFrame):
         self.label_anyo.place(x=300,y=260)
         self.entry_anyo = tk.Entry(self, width=25)
         self.entry_anyo.place(x=390, y=260)
-
-        self.pack()
 
     def refrescar(self):
         print("Resfrescando...")

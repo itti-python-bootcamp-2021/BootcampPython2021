@@ -50,7 +50,6 @@ class GestorBBDD:
     def delete(self, id):
         cursor = self.connection.cursor()
         sql = f"DELETE FROM peliculas where id={id}"
-        print(sql)
         cursor.execute(sql)
         self.connection.commit()
         cursor.close()
