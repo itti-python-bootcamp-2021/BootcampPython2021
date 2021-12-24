@@ -1,20 +1,20 @@
 import sqlite3
+import logging
 
 from model.pelicula import Pelicula
 
 class GestorBBDD:
     # Atributos
-    DATABASE_NAME = "./datos/base_de_datos_oo.db"
+    DATABASE_NAME = "./datos/bbdd_peliculas.db"
     connection = None
 
     # Constructor
     def __init__(self):
-        print("Ejecutando el constructor...")
         self.connection = sqlite3.connect(self.DATABASE_NAME)
+        self.crear_esquema_normal()
 
     # Destructor
     def __del__(self):
-        print("Ejecutando el destructor...")
         self.connection.close()
 
     # Métodos
@@ -60,4 +60,3 @@ class GestorBBDD:
         cursor.execute(sql)
         self.connection.commit()
         cursor.close()
-

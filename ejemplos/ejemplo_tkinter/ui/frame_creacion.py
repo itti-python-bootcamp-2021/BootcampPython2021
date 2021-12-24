@@ -27,6 +27,7 @@ class FrameCreacion(SuperFrame):
         self.pack()
 
     def init_components(self):
+        logging.debug("Inicializando componentes...")
         #Componentes de la GUI
         self.label_titulo = tk.Label(self, text="Titulo:", background=self.BG_COLOR)
         self.label_titulo.place(x=300,y=200)
@@ -43,12 +44,8 @@ class FrameCreacion(SuperFrame):
         self.entry_anyo = tk.Entry(self, width=25)
         self.entry_anyo.place(x=390, y=260)
 
-    def refrescar(self):
-        print("Resfrescando...")
-    
     def guardar(self):
-        print("Guardando...")
-
+        logging.debug("Guardando...")
         titulo = self.entry_titulo.get() #Obtiene el texto que hay en la caja de texto del título
         director = self.entry_director.get()
         anyo = int(self.entry_anyo.get())
@@ -63,7 +60,3 @@ class FrameCreacion(SuperFrame):
         except Exception as e:
             logging.error(e)
             tk.messagebox.showerror(title="Error", message="Error al crear la película")
-
-    def cancelar(self):
-        print("Cancelando...")
-    
