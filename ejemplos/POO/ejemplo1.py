@@ -4,7 +4,6 @@ Los enemigos se mueven de izquierda a derecha hasta que el enemigo del extremo d
 desciende 5 pixeles --> Comienzan a moverse de derecha a izquierda
 Cada cierto tiempo uno de los enemigos dispara
 
-
 Tenemos una nave espacial que dispara (player)
 Podemos moverlo
 Podemos disparar

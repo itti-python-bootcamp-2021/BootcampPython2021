@@ -1,0 +1,24 @@
+Clases:
+
+CadenaHotelera
+- nombre
+- año fundación
+- sede social
+- constructor
+
+Hotel
+- nombre
+- estrellas
+- ciudad
+- constructor
+
+Habitacion
+- número
+- capacidad
+- minibar
+- disponible
+- constructor
+
+Reserva
+- Precio
+- Fecha
