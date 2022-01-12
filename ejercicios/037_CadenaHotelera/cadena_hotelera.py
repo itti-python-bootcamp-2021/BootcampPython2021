@@ -2,29 +2,38 @@ from hotel import Hotel
 from habitacion import Habitacion
 
 class CadenaHotelera:
-    def __init__(self, nombre, anyo_fundacion, sede_social) -> None:
-        self.nombre = nombre
-        self.anyo_fundacion = anyo_fundacion
-        self.sede_social = sede_social
-        self.hoteles = []
+    #Constructor
+    def __init__(self, nombre, anyo_fundacion, sede_social="Barcelona") -> None:
+        self.__nombre = nombre
+        self.__anyo_fundacion = anyo_fundacion
+        self.__sede_social = sede_social
+        self.__hoteles = []
+        self.__anyo = 1999
 
     def get_habitaciones_minibar(self):
         hoteles_con_minibar = []
-        for hotel in self.hoteles:
+        for hotel in self.__hoteles:
             hoteles_con_minibar += hotel.get_habitaciones_minibar()
         return hoteles_con_minibar
 
+    def add_hotel(self, hotel):
+        self.__hoteles.append(hotel)
+
+    #Destructor
+    def __del__(self):
+        print("Destruyendo la cadena hotelera")
+
 if __name__ == "__main__":
     #Instanciación
-    melia = CadenaHotelera("Melia",1998,"Barcelona")
-    
+    melia = CadenaHotelera("Melia",1998)
+
     hotel1 = Hotel("Melia Ciudad de Barcelona",5,"Barcelona")
     hotel2 = Hotel("Melia Castilla",5,"Madrid")
     hotel3 = Hotel("Melia Princesa",5,"Madrid")
 
-    melia.hoteles.append(hotel1)
-    melia.hoteles.append(hotel2)
-    melia.hoteles.append(hotel3)
+    melia.add_hotel(hotel1)
+    melia.add_hotel(hotel2)
+    melia.add_hotel(hotel3)
 
     h1 = Habitacion(100,2,True,False)
     h2 = Habitacion(101,1,False)
@@ -33,14 +42,13 @@ if __name__ == "__main__":
     h5 = Habitacion(23,4,False)
     h6 = Habitacion(27,2,True)
 
-    hotel1.habitaciones.append(h1)
-    hotel1.habitaciones.append(h2)
-    hotel2.habitaciones.append(h3)
-    hotel2.habitaciones.append(h4)
-    hotel3.habitaciones.append(h5)
-    hotel3.habitaciones.append(h6)
+    hotel1.add_habitacion(h1)
+    hotel1.add_habitacion(h2)
+    hotel2.add_habitacion(h3)
+    hotel2.add_habitacion(h4)
+    hotel3.add_habitacion(h5)
+    hotel3.add_habitacion(h6)
     
     hb = melia.get_habitaciones_minibar()
-    print(type(hb))
     for h in hb:
-        print(h.numero)
+        print(h.get_numero())

@@ -1,0 +1,14 @@
+CLASE
+Ciudad
+Atributos:
+- de clase.
+	- Población máxima.
+- de instancia
+	- Nombre (público)
+	- Población (privado)
+Métodos:
+- de clase
+	- Duplicar población máxima
+- de instancia
+	- Obtener capacidad de población pendiente (pob. máxima - población) (público)
+	- Mostrar la capacidad de población pendiente (privado)
