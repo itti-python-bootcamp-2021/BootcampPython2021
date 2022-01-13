@@ -1,0 +1,13 @@
+Clase base Vehiculo
+- 2 atributos comunes a todos.
+- 2 métodos comunes a todos.
+VehiculoTerrestre Clase derivada de Vehiculo 
+- 1 atributo específico.
+- 1 método específico.
+VehiculoAereo Clase derivada de Vehiculo 
+- 1 atributo específico.
+- 1 método específico.
+VehiculoMarítimo Clase derivada de Vehiculo 
+- 1 atributo específico.
+- 1 método específico.
+- Sobreescribir uno de los métodos de Vehiculo

@@ -1,0 +1,11 @@
+Clase Factura
+Atributos:
+- Número de factura
+- Nombre de cliente
+- Importe
+
+Método generar_documento():
+- Escribir en un fichero de texto los datos de la factura.
+
+ClaseFacturaPDF heredar de factura.
+- Sobreescribir el método generar_documento() para que escriba en un PDF.
