@@ -1,0 +1,36 @@
+Todos los métodos van a mostrar por pantalla el texto: 
+"Soy NOMBRE_CLASE y estoy NOMBRE_DEL_MÉTODO"
+
+Clase Persona:
+andar()
+comer()
+
+Clase Programador(Persona):
+andar()
+programar()
+
+Clase Alpinista(Persona):
+andar()
+escalar()
+
+Clase Ciclista(Persona):
+andar()
+montar_en_bici()
+
+Clase ProgramadorDeportista(Programador, Alpinista, Ciclista):
+descansar()
+
+
+-Crear una instancia de ProgramadorDeportista.
+-Responder a la siguiente pregunta:
+¿Qué va a mostrar el programa cuando se llame al método:
+montar_en_bici?: Soy Ciclista y estoy Montando en bici.
+escalar?:
+programar?:
+comer?:
+andar?:
+descansar?:
+
+
+
+

@@ -23,7 +23,6 @@ class Ave(Animal):
     def comer(self):
         print(f"Soy {self.nombre} Comiendo (como un ave)...")
 
-
 #CLASE DERIVADA, CLASE HIJA
 class Pez(Animal):
     def __init__(self, nombre, familia):
@@ -39,9 +38,9 @@ class Pez(Animal):
 
 gallina = Ave("Gallina","Phasianidae", False)
 sardina = Pez("Sardina","Clupeidae")
-gallina.comer()
-gallina.dormir()
-gallina.volar()
-sardina.nadar()
-sardina.comer()
+#gallina.comer()
+#gallina.dormir()
+#gallina.volar()
+#sardina.nadar()
+#sardina.comer()
 sardina.dormir()
