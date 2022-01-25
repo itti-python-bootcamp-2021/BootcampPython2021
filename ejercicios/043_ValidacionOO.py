@@ -45,7 +45,7 @@ class ProductoRebajado(Producto):
         super().__init__(nombre, pvp, categoria)
         self.descuento = descuento
     def get_pvp(self):#Sobreescritura
-        #Observen que los dos métodos get_pvp de la clase base y de la clase heredad conviven
+        #Observen que los dos métodos get_pvp de la clase base y de la clase heredada conviven
         return super().get_pvp()-(super().get_pvp()*(1/self.descuento))
 
 try:
