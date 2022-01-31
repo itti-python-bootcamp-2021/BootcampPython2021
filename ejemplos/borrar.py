@@ -1,7 +1,7 @@
-#declaración, inicialización y asignación
-importe=0
-Importe = importe + 1
-importe="tres"
-Importe=3
-_importe=3
-importe_Factura_10=38
+from borrar_test import *
+
+def sumar(s1, s2):
+    return s1+s2
+
+def restar(s1, s2):
+    return s1+s2    
