@@ -1,0 +1,16 @@
+body {
+    background-color: brown;
+}
+h1 {
+    color: rgb(116, 139, 14);
+}
+h2 {
+    background-color: aquamarine;
+}
+h6 {
+    font-style: italic;
+    text-decoration:underline;
+}
+h1,h2,h6{
+    text-align:center;
+}
