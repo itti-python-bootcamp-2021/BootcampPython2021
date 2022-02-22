@@ -1,16 +1,30 @@
 body {
+    margin: 0px;
+}
+#div-cabecera {
     background-color: brown;
+    height: 6em;
 }
-h1 {
-    color: rgb(116, 139, 14);
+#div-menu {
+    background-color: rgb(78, 78, 78);
+    height: 3em;
 }
-h2 {
-    background-color: aquamarine;
+#div-principal {
+    width: 972px;
+    margin: auto;
 }
-h6 {
-    font-style: italic;
-    text-decoration:underline;
+.pizza {
+    width: 33%;
 }
-h1,h2,h6{
-    text-align:center;
+.pizza img {
+    width: 100%;
+}
+.boton-pedir {
+    background-color: red;
+    color: white;
+    padding: 1em 2em 1em 2em;
+    border-radius: 10px;
+}
+#x {
+    float: right;
 }
