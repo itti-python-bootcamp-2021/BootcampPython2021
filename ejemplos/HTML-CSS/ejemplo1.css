@@ -26,9 +26,11 @@ body {
     float:left;
     margin-right: 1.5%;
 }
+
 .pizza img {
     width: 100%;
 }
+
 .boton-pedir {
     background-color: rgb(168, 18, 18);
     color: white;
