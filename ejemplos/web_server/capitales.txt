@@ -1,0 +1,7 @@
+Francia:París
+España:Madrid
+Portugal:Lisboa
+Grecia:Atenas
+Alemania:Berlín
+Holanda:La Haya
+Ucrania:Kiev

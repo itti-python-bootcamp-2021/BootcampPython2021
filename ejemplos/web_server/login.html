@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        #formulario {
+            width: 500px;
+            margin: auto;
+            background-color: aquamarine;
+            border-radius: 5px;
+            padding: 5%;
+        }
+        .entrada {
+            padding: 10px;
+            border-radius: 5px;
+            width: 95%;
+            font-size: 1.5em;
+        }
+        .input {
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+        #boton-aceptar {
+            width: 100%;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: darkorange;
+            color:white;
+            font-size: 1.5em;
+        }
+        #registrar {
+            width: 100%;
+            text-align: center;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="formulario">
+        <form action="/validar" method="GET">
+            <div class="input">
+                <input type="email" name="correo" id="correo" placeholder="E-mail" class="entrada">
+            </div>
+            <div class="input">
+                <input type="password" name="pwd" id="pwd" placeholder="Contraseña" class="entrada">
+            </div>
+            <div class="input">
+                <input type="submit" value="Validar" id="boton-aceptar">
+            </div>
+            <div id="registrar">
+                <a href="/registrar">Registrar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
