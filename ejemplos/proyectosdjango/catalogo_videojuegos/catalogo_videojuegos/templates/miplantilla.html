@@ -5,12 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi plantilla</title>
+    <style>
+        table {
+            border-style: solid;
+            border-width: 1px;
+        }
+        td {
+            border-style: solid;
+            border-width: 1px;
+            width: 200px;
+        }
+        thead th{
+            background-color: blueviolet;
+            color: white;
+        }
+        .numerico {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <header>Encabezado</header>
-    <main>El importe es {{importe}}</main>
+    {% if activo %}
+        <main>El importe es {{importe}}</main>
+    {% endif %}
     <aside>Barra lateral</aside>
-    <article>Grupo de información</article>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Título</th>
+                    <th>Género</th>
+                </tr>
+            </thead> 
+            <tfoot>
+                <tr>
+                    <td>Pie 1</td>
+                    <td>Pie 2</td>
+                    <td>Pie 3</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <!--REPETIR n VECES-->
+                {% for videojuego in videojuegos %}
+                <tr>
+                    <td class="numerico">{{videojuego.0}}</td>
+                    <td>{{videojuego.1}}</td>
+                    <td>{{videojuego.2}}</td>
+                </tr>
+                {% endfor %}
+                <!-- FIN DE LA REPETICIÓN-->
+
+            </tbody>   
+            
+        </table>
+
+
+    </article>
     <footer>Pie</footer>
 </body>
 </html>

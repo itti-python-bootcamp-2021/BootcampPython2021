@@ -1,4 +1,4 @@
-"""catalogo_videojuegos URL Configuration
+"""gestor_videojuegos URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from catalogo_videojuegos.views import saludador, saludador_personalizado, mostrar_plantilla, home
+from app_catalogo.views import home, crear_videojuego, mostrar_videojuegos
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
-    path('', home),
     path('admin/', admin.site.urls),
-    path('hola/', saludador),
-    path('holapersonalizado/<str:nombre>/<int:edad>/',saludador_personalizado),
-    path('mostrar_plantilla/',mostrar_plantilla)
-]
+    path('', home),
+    path('crear_videojuego/', crear_videojuego),
+    path('mostrar_videojuegos/', mostrar_videojuegos),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
