@@ -6,18 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/videojuegos.css' %}">
+    <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
 </head>
 <body>
-    <header>
-        <ul id="menu_principal">
-            <li>Juegos</li>
-            <li>Plataformas</li>
-            <li>Géneros</li>
-            <li>Mi perfil</li>
-            <li>Cesta</li>
-        </ul>
-    </header>
+    {% include "incrustables/encabezado.html" %}
     <main>
         Contenido principal
     </main>

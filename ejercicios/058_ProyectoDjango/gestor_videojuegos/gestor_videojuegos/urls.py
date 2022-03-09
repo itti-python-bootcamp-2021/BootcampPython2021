@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app_catalogo.views import home, crear_videojuego, mostrar_videojuegos
+from app_catalogo.views import home, crear_videojuego, mostrar_videojuegos, crear_videojuego_bbdd
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,4 +26,5 @@ urlpatterns = [
     path('', home),
     path('crear_videojuego/', crear_videojuego),
     path('mostrar_videojuegos/', mostrar_videojuegos),
+    path('crear_videojuego_bbdd/', crear_videojuego_bbdd),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

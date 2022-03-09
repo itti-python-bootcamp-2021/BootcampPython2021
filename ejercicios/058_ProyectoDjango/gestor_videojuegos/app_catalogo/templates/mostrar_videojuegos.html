@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videojuegos</title>
+    <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
 </head>
 <body>
+    {% include "incrustables/encabezado.html" %}
     <h1>Mostrar videojuegos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Plataforma</th>
+                <th>Género</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for videojuego in juegos %}
+            <tr>
+                <td>{{videojuego.id}}</td>
+                <td>{{videojuego.titulo}}</td>
+                <td>{{videojuego.plataforma}}</td>
+                <td>{{videojuego.genero}}</td>
+                <td>{{videojuego.precio}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tr>
+
+        </tr>
+    </table>
 </body>
 </html>
