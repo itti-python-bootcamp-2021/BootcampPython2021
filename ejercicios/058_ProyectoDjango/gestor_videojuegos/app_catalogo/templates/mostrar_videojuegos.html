@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,34 +9,40 @@
     <title>Videojuegos</title>
     <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
 </head>
+
 <body>
     {% include "incrustables/encabezado.html" %}
-    <h1>Mostrar videojuegos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Plataforma</th>
-                <th>Género</th>
-                <th>Precio</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for videojuego in juegos %}
-            <tr>
-                <td>{{videojuego.id}}</td>
-                <td>{{videojuego.titulo}}</td>
-                <td>{{videojuego.plataforma}}</td>
-                <td>{{videojuego.genero}}</td>
-                <td>{{videojuego.precio}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-
-        <tr>
-
-        </tr>
-    </table>
+    <main id="main-listado-videojuegos">
+        <h1>Mostrar videojuegos</h1>
+        <table id="tabla-videojuegos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Plataforma</th>
+                    <th>Género</th>
+                    <th>Precio</th>
+                    <th>Acción</th>
+                    <th>Agregar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for videojuego in juegos %}
+                <tr>
+                    <td>{{videojuego.id}}</td>
+                    <td>{{videojuego.titulo}}</td>
+                    <td>{{videojuego.plataforma}}</td>
+                    <td>{{videojuego.genero}}</td>
+                    <td>{{videojuego.precio}}</td>
+                    <td><a href="/borrar_videojuego/?id={{videojuego.id}}"><img
+                                src="{% static 'app_catalogo/images/delete.png' %}" width="25px"></a></td>
+                    <td><a href="/agregar_producto/?id={{videojuego.id}}&precio={{videojuego.precio}}"><img
+                        src="{% static 'app_catalogo/images/agregar.png' %}" width="25px"></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
 </body>
+
 </html>

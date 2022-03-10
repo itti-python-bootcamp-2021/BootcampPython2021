@@ -10,18 +10,13 @@
 </head>
 <body>
     {% include "incrustables/encabezado.html" %}
-    <h1>Crear videojuego</h1>
-    <form action="/crear_videojuego_bbdd" method="GET">
+    <h1>Crear plataforma</h1>
+    <form action="/crear_plataformas_bbdd" method="GET">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre"> 
-        <label for="plataforma">Plataforma:</label>
-        <input type="text" name="plataforma" id="plataforma"> 
-        <label for="genero">Género:</label>
-        <input type="text" name="genero" id="genero">
+        <label for="fabricante">Fabricante:</label>
+        <input type="text" name="fabricante" id="fabricante"> 
         <input type="submit" value="Enviar">
     </form>
-    <div>
-        <a href="/mostrar_videojuegos/">Mostrar videojuegos</a>
-    </div>
 </body>
 </html>

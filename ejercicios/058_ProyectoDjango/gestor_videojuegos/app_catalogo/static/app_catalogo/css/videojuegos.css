@@ -8,6 +8,7 @@ body {
 header {
     width: 100%;
     background-color: aquamarine;
+    box-sizing: border-box;
     padding: 2em;
 }
 
@@ -19,4 +20,27 @@ header {
 #menu_principal li {
     display: inline;
     margin-left: 4em;
+}
+
+#main-listado-videojuegos{
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+#tabla-videojuegos {
+    width: 100%;
+}
+
+#tabla-videojuegos tr:nth-child(odd) {
+    background-color: rgb(105, 105, 105);
+    color: white;
+}
+#tabla-videojuegos tr:nth-child(even) {
+    background-color: white;
+    color: rgb(105, 105, 105);;
+}
+#tabla-videojuegos th {
+    background-color: rgb(146, 58, 0) !important;
+    color: white;
+    padding: 20px;
 }
