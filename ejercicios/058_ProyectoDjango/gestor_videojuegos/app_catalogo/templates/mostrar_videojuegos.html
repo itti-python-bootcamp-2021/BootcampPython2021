@@ -8,13 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videojuegos</title>
     <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
+    <link rel="stylesheet" href="{% static 'app_catalogo/css/dialogo.css' %}">
+    <script>
+        var idVideojuego=0;
+        function openDialog(id) {
+            idVideojuego=id;
+            dialogo = document.querySelector("#dialogo-borrar-videojuego");
+            dialogo.showModal();
+        }
+        function closeDialog() {
+            dialogo = document.querySelector("#dialogo-borrar-videojuego");
+            dialogo.close();
+        }
+        function eliminarVideojuego(){
+            window.location.href = "/borrar_videojuego/?id="+idVideojuego;
+            closeDialog();
+        }
+    </script>
 </head>
 
 <body>
     {% include "incrustables/encabezado.html" %}
-    <main id="main-listado-videojuegos">
-        <h1>Mostrar videojuegos</h1>
-        <table id="tabla-videojuegos">
+    <main id="main-content">
+        <h1>Catálogo</h1>
+        <div><a href="/crear_videojuego/">Nuevo</a></div>
+        <table class="tabla-elementos">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -34,8 +52,9 @@
                     <td>{{videojuego.plataforma}}</td>
                     <td>{{videojuego.genero}}</td>
                     <td>{{videojuego.precio}}</td>
-                    <td><a href="/borrar_videojuego/?id={{videojuego.id}}"><img
-                                src="{% static 'app_catalogo/images/delete.png' %}" width="25px"></a></td>
+                    <!--<td><a href="/borrar_videojuego/?id={{videojuego.id}}"><img
+                                src="{% static 'app_catalogo/images/delete.png' %}" width="25px"></a></td>-->
+                    <td><img src="{% static 'app_catalogo/images/delete.png' %}" width="25px" onclick="openDialog({{videojuego.id}})"></td>
                     <td><a href="/agregar_producto/?id={{videojuego.id}}&precio={{videojuego.precio}}"><img
                         src="{% static 'app_catalogo/images/agregar.png' %}" width="25px"></a></td>
                 </tr>
@@ -43,6 +62,11 @@
             </tbody>
         </table>
     </main>
+    <dialog id="dialogo-borrar-videojuego">
+        <div id="div-mensaje">¿Desea eliminar el videojuego?</div>
+        <div><button id="b-eliminar" onclick="eliminarVideojuego()">Eliminar</button><button id="b-cancelar" onclick="closeDialog()">Cancelar</button>
+        </div>
+    </dialog>
 </body>
 
 </html>

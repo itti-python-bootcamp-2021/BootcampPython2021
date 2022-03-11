@@ -1,0 +1,33 @@
+#dialogo-borrar-videojuego {
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    left:50%;
+    top:100px;
+    margin-left:-250px;
+    background-color: #CCC;
+    padding: 3em;
+    text-align: center;
+    border-radius: 10px;
+}
+button {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2em;
+}
+button:first-child {
+    margin-right: 2em;
+}
+#div-mensaje {
+    margin-bottom: 2em;
+    font-size: 2em;
+}
+
+#b-eliminar {
+    background-color: red;
+}
+
+#b-cancelar {
+    background-color: green;
+}

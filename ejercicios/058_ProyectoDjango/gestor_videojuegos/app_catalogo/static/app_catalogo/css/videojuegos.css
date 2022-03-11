@@ -22,24 +22,24 @@ header {
     margin-left: 4em;
 }
 
-#main-listado-videojuegos{
+#main-content{
     width: 1000px;
     margin: auto;
     text-align: center;
 }
-#tabla-videojuegos {
+.tabla-elementos {
     width: 100%;
 }
 
-#tabla-videojuegos tr:nth-child(odd) {
+.tabla-elementos tr:nth-child(odd) {
     background-color: rgb(105, 105, 105);
     color: white;
 }
-#tabla-videojuegos tr:nth-child(even) {
+.tabla-elementos tr:nth-child(even) {
     background-color: white;
     color: rgb(105, 105, 105);;
 }
-#tabla-videojuegos th {
+.tabla-elementos th {
     background-color: rgb(146, 58, 0) !important;
     color: white;
     padding: 20px;

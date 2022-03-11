@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,20 +9,21 @@
     <title>Crear</title>
     <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
 </head>
+
 <body>
     {% include "incrustables/encabezado.html" %}
-    <h1>Crear videojuego</h1>
-    <form action="/crear_videojuego_bbdd" method="GET">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre"> 
-        <label for="plataforma">Plataforma:</label>
-        <input type="text" name="plataforma" id="plataforma"> 
-        <label for="genero">Género:</label>
-        <input type="text" name="genero" id="genero">
-        <input type="submit" value="Enviar">
-    </form>
-    <div>
-        <a href="/mostrar_videojuegos/">Mostrar videojuegos</a>
-    </div>
+    <main id="main-content">
+        <h1>Crear videojuego</h1>
+        <form action="/crear_videojuego_bbdd" method="GET">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre">
+            <label for="plataforma">Plataforma:</label>
+            <input type="text" name="plataforma" id="plataforma">
+            <label for="genero">Género:</label>
+            <input type="text" name="genero" id="genero">
+            <input type="submit" value="Enviar">
+        </form>
+    </main>
 </body>
+
 </html>

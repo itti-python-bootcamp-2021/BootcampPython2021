@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataformas</title>
+    <link rel="stylesheet" href="{% static 'app_catalogo/css/videojuegos.css' %}">
+</head>
+
+<body>
+    {% include "incrustables/encabezado.html" %}
+    <main id="main-content">
+        <h1>Plataformas</h1>
+        <div><a href="/crear_plataforma/">Nueva</a></div>
+        <table class="tabla-elementos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fabricante</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plataforma in plataformas %}
+                <tr>
+                    <td>{{plataforma.id}}</td>
+                    <td>{{plataforma.nombre}}</td>
+                    <td>{{plataforma.fabricante}}</td>
+                    <td><a href="/borrar_plataforma/?id={{plataforma.id}}"><img
+                                src="{% static 'app_catalogo/images/delete.png' %}" width="25px"></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>
