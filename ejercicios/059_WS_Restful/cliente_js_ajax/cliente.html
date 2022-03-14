@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente</title>
+</head>
+<script>
+    function eliminar() {
+        console.log("ELIMINANDO...");
+        var url = "http://localhost:8000/api/videojuego/";
+        var id = document.getElementById("identificador").value;
+        url = url + id + "/";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", url);
+
+        xhr.setRequestHeader("Accept", "*/*");
+        
+        xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+        }};
+
+        xhr.send();
+    }
+</script>
+<body>
+    <input type="number" id="identificador">
+    <button onclick="eliminar()">Eliminar</button>
+</body>
+</html>

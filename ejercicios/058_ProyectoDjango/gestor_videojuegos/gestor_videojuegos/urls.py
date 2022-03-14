@@ -26,10 +26,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('crear_videojuego/', crear_videojuego),
-    path('crear_plataforma/', crear_plataforma),
     path('mostrar_videojuegos/', mostrar_videojuegos),
     path('mostrar_plataformas/', mostrar_plataformas),
+    path('crear_videojuego/', crear_videojuego),
+    path('crear_plataforma/', crear_plataforma),
     path('crear_videojuego_bbdd/', crear_videojuego_bbdd),
     path('crear_plataformas_bbdd/', crear_plataforma_bbdd),
     path('borrar_videojuego/', borrar_videojuego),
