@@ -1,5 +1,9 @@
 import requests
+import json
+from django.http import HttpResponse
 
-x = requests.delete('http://localhost:8000/api/videojuego/2/')
+respuesta = requests.get('http://localhost:8000/api/videojuego/')
 
-print(x.text)
+json_array = json.loads(respuesta.content)
+for json_object in json_array:
+    print(json_object["id"], json_object["titulo"])

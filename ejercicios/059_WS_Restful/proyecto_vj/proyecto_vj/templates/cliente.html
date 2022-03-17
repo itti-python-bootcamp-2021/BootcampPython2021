@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente</title>
+</head>
+<script>
+    function eliminar() {
+        console.log("Eliminando...");
+        var url = "http://localhost:8000/api/videojuego/";
+        var id = document.getElementById("identificador").value;
+        url = url + id + "/";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", url);
+
+        xhr.setRequestHeader("Accept", "*/*");
+        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+                let json_retorno = JSON.parse(xhr.responseText);
+                document.getElementById("codigo").innerHTML=json_retorno.code;
+                document.getElementById("mensaje").innerHTML=json_retorno.message;                
+            };
+        }
+
+        xhr.send();
+    }
+    function leer() {
+        console.log("Recuperando...");
+        var url = "http://localhost:8000/api/videojuego/";
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.setRequestHeader("Accept", "*/*");
+        
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+                let json_retorno = JSON.parse(xhr.responseText); 
+                for (let i=0;i<json_retorno.length;i++){
+                    console.log(json_retorno[i].id + ":" + json_retorno[i].titulo);
+                }               
+            };
+        }
+        xhr.send();
+    }
+</script>
+<body>
+    <input type="number" id="identificador">
+    <button onclick="eliminar()">Eliminar</button>
+    <button onclick="leer()">Leer</button>
+    <div>
+        <span id="codigo">xxxx</span>:<span id="mensaje">xxxx</span>
+    </div>
+</body>
+</html>

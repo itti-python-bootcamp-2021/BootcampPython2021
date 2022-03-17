@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include 
+from proyecto_vj.views import cliente_ws_js 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', cliente_ws_js),
     path('api/', include("vj_app.urls")),
 ]

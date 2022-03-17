@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proyecto_vj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["./proyecto_vj/templates",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

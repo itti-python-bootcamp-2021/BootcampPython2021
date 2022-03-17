@@ -19,10 +19,14 @@
         xhr.setRequestHeader("Accept", "*/*");
         
         xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            console.log(xhr.status);
-            console.log(xhr.responseText);
-        }};
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+                let json_retorno = JSON.parse(xhr.responseText);
+                document.getElementById("codigo").innerHTML=json_retorno.code;
+                document.getElementById("mensaje").innerHTML=json_retorno.message;                
+            };
+        }
 
         xhr.send();
     }
@@ -30,5 +34,9 @@
 <body>
     <input type="number" id="identificador">
     <button onclick="eliminar()">Eliminar</button>
+    <div>
+        <span id="codigo"></span>:<span id="mensaje"></span>
+    </div>
+
 </body>
 </html>
